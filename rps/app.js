@@ -10,6 +10,7 @@ randomNumber = 0;
 
 function gone () {
     const go = document.getElementById('go');
+    const result = document.getElementById('result');
     const userChoice = document.getElementById('user-input');
     const userChoiceVal = userChoice.options[userChoice.selectedIndex].value;
     const userChoiceInd = userChoice.options[userChoice.selectedIndex].index+1;
@@ -42,8 +43,6 @@ function gone () {
         result.innerhtml = "YOU LOSE!"
         result.style="color: red"
     }
-
-    
 
 }
 
