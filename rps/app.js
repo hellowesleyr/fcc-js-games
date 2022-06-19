@@ -40,7 +40,7 @@ function gone () {
     }
     if (userChoiceInd == 1 && randomNumber == 2 || userChoiceInd ==2 && randomNumber == 3 || userChoiceInd == 3 && randomNumber == 1)
     {
-        result.innerhtml = "YOU LOSE!"
+        result.innerHTML = "YOU LOSE!"
         result.style="color: red"
     }
 
