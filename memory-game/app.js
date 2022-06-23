@@ -62,7 +62,9 @@ function shuffle(array) {
 currentArray = shuffle(cardArray)
 const grid = document.querySelector('#grid')
 
-
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 function getCard(element) {
     const card = document.createElement('img')
@@ -122,15 +124,23 @@ function createBoard(array = currentArray) {
 }
 
 
+function updateElement(el){
+    el.setAttribute('src',el.img)
+    
+}
 
-
-function updateSelected(array = selected){
-    setTimeout(console.log('waiting'),1000);
+function updateSelected(el,array = selected){
+    sleep(1000)
+    
     if (array.length>1) {
-        if (array[0] == array[1]) 
+        
+        el.setAttribute('src',el.img)
+        if (array[0][0] == array[1][0] && array[0][1] != array[1][1]) 
+        //This is kind of ugly and not readable.
+        //Next time make the selected array a javascript object instead
         {   console.log(array[0])
             console.log(array[1])
-            const elements = document.querySelectorAll(`.${array[0]}`)
+            const elements = document.querySelectorAll(`.${array[0][0]}`)
             elements.forEach(element => {
                 element.src="img/match.jpg"
                 element.matched = true;
@@ -140,18 +150,32 @@ function updateSelected(array = selected){
             selected=[];
         }
         else {
-            document.querySelectorAll(`.${array[0]}`).forEach(element => {
+            document.querySelectorAll(`.${array[0][0]}`).forEach(element => {
+               
+               
+               
                 element.src="img/square.jpg"
             })
-            document.querySelectorAll(`.${array[1]}`).forEach(element =>
-                {element.src="img/square.jpg"})
-            array[0].src="square.jpg"
-            array[1].src="square.jpg"
-            selected=[]
+            document.querySelectorAll(`.${array[1][0]}`).forEach(element =>
+                {   
+                    element.src="img/square.jpg"
+                
+            })
+                
+
+            selected=[];
+            sleep(1000).
+            then(el.src="img/square.jpg")
+            
         }
+    }
+    else {
+       
     }    
     return;
 }
+
+
 
 let nextid = 0;
 let score = 0;
@@ -166,10 +190,15 @@ cards.forEach(el => el.addEventListener('click', event => {
         return false;
     }
     console.log(el.value)
-    selected.push(el.value)
+    selected.push([el.value,el.id])
     console.log(selected)
-    el.src = el.img
-    updateSelected()
+    updateElement(el)
+    
+    alert(el.img)
+    
+    updateSelected(el)
+
+    
 
 }))
 
