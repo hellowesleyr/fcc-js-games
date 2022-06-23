@@ -59,8 +59,7 @@ function shuffle(array) {
     return array;
   }
 
-currentArray = shuffle(cardArray)
-const grid = document.querySelector('#grid')
+
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -130,19 +129,18 @@ function updateElement(el){
 }
 
 function updateSelected(el,array = selected){
-    sleep(1000)
+    
     
     if (array.length>1) {
         
-        el.setAttribute('src',el.img)
         if (array[0][0] == array[1][0] && array[0][1] != array[1][1]) 
         //This is kind of ugly and not readable.
         //Next time make the selected array a javascript object instead
-        {   console.log(array[0])
-            console.log(array[1])
-            const elements = document.querySelectorAll(`.${array[0][0]}`)
+        {   console.log(array[0]);
+            console.log(array[1]);
+            const elements = document.querySelectorAll(`.${array[0][0]}`);
             elements.forEach(element => {
-                element.src="img/match.jpg"
+                element.src="img/match.jpg";
                 element.matched = true;
             });
             score++;
@@ -151,55 +149,52 @@ function updateSelected(el,array = selected){
         }
         else {
             document.querySelectorAll(`.${array[0][0]}`).forEach(element => {
-               
-               
-               
-                element.src="img/square.jpg"
+                element.setAttribute('src','img/square.jpg')
             })
-            document.querySelectorAll(`.${array[1][0]}`).forEach(element =>
-                {   
-                    element.src="img/square.jpg"
-                
-            })
+            document.querySelectorAll(`.${array[1][0]}`).forEach(element => {   
+                element.setAttribute('src','img/square.jpg')
+                })
                 
 
             selected=[];
-            sleep(1000).
-            then(el.src="img/square.jpg")
+           
+           
             
         }
     }
-    else {
-       
-    }    
-    return;
 }
 
 
+function click(element,selected) {
+    updateView(element);
+    sleep(1000);
+    
+    updateSelected(element,selected);
+
+}
+
+function updateView(element) {
+    element.setAttribute('src',element.img);
+}
 
 let nextid = 0;
 let score = 0;
 let selected = [];
+currentArray = shuffle(cardArray);
+const grid = document.querySelector('#grid');
 createBoard()
 const scoreBoard = document.getElementById('#score')
 const cards = document.querySelectorAll(".card")
+
 cards.forEach(el => el.addEventListener('click', event => {
     
     //console.log(el.img)
     if (el.matched) {
         return false;
     }
-    console.log(el.value)
     selected.push([el.value,el.id])
-    console.log(selected)
-    updateElement(el)
-    
-    alert(el.img)
-    
-    updateSelected(el)
 
-    
-
+    click(el,selected)
 }))
 
 console.log(cards[0])
