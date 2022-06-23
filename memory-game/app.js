@@ -68,8 +68,10 @@ function getCard(element) {
     const card = document.createElement('img')
     
     //card.src = ("img/square.jpg")
-    card.src = (element.img)
+    card.id = ++nextid;
+    card.src = ("img/square.jpg")
     card.width= 200;
+    card.matched = false;
     card.img = element.img;
     card.height = 200;
     card.value = `${element.name}`;
@@ -87,7 +89,7 @@ function DrawArray(array = currentArray) {
             row.className = "gridrow"
             count=0
         }
-        const card = getCard(element);
+        
         row.append(getCard(element));
         //row.innerHTML.
         grid.append(row);
@@ -109,6 +111,7 @@ function createBoard(array = currentArray) {
             count=0
         }
         const card = getCard(element);
+        card.id=count;
         row.append(getCard(element));
         //row.innerHTML.
         grid.append(row);
@@ -119,10 +122,10 @@ function createBoard(array = currentArray) {
 }
 
 
-let score = 0;
-let selected = [];
+
 
 function updateSelected(array = selected){
+    setTimeout(console.log('waiting'),1000);
     if (array.length>1) {
         if (array[0] == array[1]) 
         {   console.log(array[0])
@@ -130,12 +133,18 @@ function updateSelected(array = selected){
             const elements = document.querySelectorAll(`.${array[0]}`)
             elements.forEach(element => {
                 element.src="img/match.jpg"
+                element.matched = true;
             });
+            score++;
+            document.getElementById('score').innerHTML=(score)
             selected=[];
         }
         else {
-            document.querySelectorAll(`.${array[0]}`)[0].src="img/square.jpg"
-            document.querySelectorAll(`.${array[1]}`)[0].src="img/square.jpg"
+            document.querySelectorAll(`.${array[0]}`).forEach(element => {
+                element.src="img/square.jpg"
+            })
+            document.querySelectorAll(`.${array[1]}`).forEach(element =>
+                {element.src="img/square.jpg"})
             array[0].src="square.jpg"
             array[1].src="square.jpg"
             selected=[]
@@ -144,17 +153,22 @@ function updateSelected(array = selected){
     return;
 }
 
-
-
+let nextid = 0;
+let score = 0;
+let selected = [];
 createBoard()
 const scoreBoard = document.getElementById('#score')
 const cards = document.querySelectorAll(".card")
 cards.forEach(el => el.addEventListener('click', event => {
-    el.src = el.img
+    
     //console.log(el.img)
+    if (el.matched) {
+        return false;
+    }
     console.log(el.value)
     selected.push(el.value)
     console.log(selected)
+    el.src = el.img
     updateSelected()
 
 }))
