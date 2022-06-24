@@ -124,12 +124,10 @@ function createBoard(array = currentArray) {
 
 
 function updateElement(el){
-    el.setAttribute('src',el.img)
-    
+    el.setAttribute('src',el.img);
 }
 
-function updateSelected(el,array = selected){
-    
+/*function updateSelected(el,array = selected){
     
     if (array.length>1) {
         
@@ -162,21 +160,45 @@ function updateSelected(el,array = selected){
             
         }
     }
-}
-
-
-function click(element,selected) {
-    updateView(element);
-    sleep(1000);
-    
-    updateSelected(element,selected);
-
-}
-
+} */
 function updateView(element) {
     element.setAttribute('src',element.img);
 }
 
+function  updateSelected() {
+    selected.push(element);
+    console.log(selected[0]);
+    selected[0].setAttribute("src",selected[0].img)
+    if (selected.length>1 ) {
+        if (selected[0].value == selected[1].value && selected[0].id != selected[1].id) {
+                score++;
+                document.getElementById('score').innerHTML=(score);
+                selected[0].matched=true
+                selected[0].src="img/match.jpg"
+                selected[1].matched=true
+                selected[1].src="img/match.jpg"
+                selected=[]
+                console.log(selected)
+            
+        }
+        else {
+            selected[0].src = "img/square.jpg"
+            selected[1].src = "img/square.jpg"
+
+            selected=[];
+            
+        }
+    }
+}
+
+
+function click() {
+    console.log
+    updateSelected();
+    
+
+}
+let element = null;
 let nextid = 0;
 let score = 0;
 let selected = [];
@@ -187,14 +209,18 @@ const scoreBoard = document.getElementById('#score')
 const cards = document.querySelectorAll(".card")
 
 cards.forEach(el => el.addEventListener('click', event => {
-    
+    element=el;
     //console.log(el.img)
     if (el.matched) {
         return false;
     }
-    selected.push([el.value,el.id])
+    updateView(el);
+    setTimeout(function(){
+        click()
+    }, 300);
+    
 
-    click(el,selected)
+
 }))
 
 console.log(cards[0])
