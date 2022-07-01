@@ -4,6 +4,7 @@ const timeLeft = document.getElementById("time-left");
 const score = document.getElementById("score");
 let hit = false;
 let result =  0;
+let currentTime = 60;
 let timerId = null;
 
 
@@ -12,6 +13,8 @@ let timerId = null;
 function randomSqaure() {
     squares.forEach(square => {
         square.classList.remove("mole");
+        square.classList.remove("hit");
+
         hit = false;
     })
     rand = Math.floor(Math.random()*9);
@@ -24,27 +27,31 @@ function randomSqaure() {
 squares.forEach(square => {
     square.addEventListener("mousedown",event => {
         if (square.classList.contains("mole")) {
-            hit=true;
             result++;
             score.innerText=`${result}`;
+            square.classList.remove("mole")
+            square.classList.add("hit")
         }
     })
 })
 
 function moveMole() {
-        if (hit==false)
-        {
-            timerId = setInterval(randomSqaure,500);
-        }
-        if (hit==true) {
-            timerId = setInterval(randomSqaure,2000);
-        }
+        randomSqaure();
+
     }
 
 
 
-moveMole();
+let gameLoop = setInterval(moveMole,500);
 
 function countDown() {
+    currentTime--;
+    timeLeft.innerText = currentTime;
 
+    if(currentTime == 0) {
+        clearInterval(countDownTimerId);
+        alert("Game OVER! your final score is"+result);
+    }
 }
+
+let countDownTimerId = setInterval(countDown,1000);

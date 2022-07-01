@@ -16,3 +16,7 @@ flex-wrap: wrap;
 .mole {
     background-color: blue;
 }
+
+.hit {
+    background-color: darkred;
+}
