@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epic RPS!</title>
+    
+</head>
+<body>
+    <video autoplay muted loop id="myVideo">
+        <source src="img/waterfall.mp4">
+    </video>
+    <header>
+            <li><a><button class="navButton">Home</button></a></li>
+            <li><a><button class="navButton">Home</button></a></li>
+            <li><a><button class="navButton">Home</button></a></li>
+    </header>
+    <div class="main-container">
+        
+        <div class="pane-row">
+            <div class="pane">
+                <div id="player-image" class="pane-image"></div>
+                <div id="player-bar" class="pane-bar"></div>
+            </div>
+            <div class="control-row">
+                <p class="result"></p>
+                <div class="controls">
+                    <button class="control" number="1" id="rock"></button>
+                    <button class="control" number="2"2 id="paper"></button>
+                    <button class="control" number="3" id="scissors"></button>
+                    <a href="index.html" class="replay">Play again?</a>
+                </div>
+                
+            </div>
+    
+            <div class="pane">
+                <div id="computer-image"class="pane-image"></div>
+                <div id="computer-bar" class="pane-bar"></div>   
+            </div>
+        </div>
+    
+
+        
+    </div>  
+    <div class="footer">
+        Made by Wez
+    </div> 
+    <script src="app.js"></script>
+
+</body>
+</html>

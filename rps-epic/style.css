@@ -1,0 +1,242 @@
+
+
+* {
+    z-index: 1;
+}
+
+#myVideo {
+
+    position: absolute;
+    justify-self: center;
+    z-index: -20;
+    max-width: 125%;
+    resize: none;
+    max-height: 125%;
+  }
+
+header {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    color: #f1f1f1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 3em;
+    padding: 5px;
+    height: 5%;
+    
+}
+
+header,ul {
+    flex-direction: row;
+    list-style: none;
+}
+
+ul {
+    display: flex;
+}
+
+header ul li {
+    padding: 5px 5px;
+    margin:  10px;
+}
+
+header ul li {
+    font-size: 1000px;
+}
+
+header li:first-child{
+    margin-left:0 ;
+}
+
+header li:last-child{
+    margin-left: auto;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+}
+
+body video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+video {
+    display: inline-block
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.pane-row {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navButton {
+    
+}
+.seperator {
+    margin: 0 
+}
+
+.pane {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    width: 200px;
+    padding: 1em;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+
+
+.control-row {
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    padding: 5em
+}
+
+.controls {
+    
+    display: flex;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 0;
+    padding: 0.5em 1em;
+}
+
+.control {
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1em;
+    margin: 1em;
+}
+
+.result {
+    margin: 0;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    font-size: 20px;
+    text-align: center;
+    width: 412px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 1920px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.replay {
+    color: white;
+    display: none;
+    font-size: 28px;
+    padding: 0px;
+    margin: 0px;
+
+}
+
+#player-image {
+    background-image: url("img/rock-player.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-style: solid;
+    border-color: black;
+    width: 200px;
+    height: 150px
+}
+
+#player-bar {
+    width: 100%;
+    height: 15px;
+    background-color: green;
+    border-style: solid;
+    border-color: green;
+}
+
+#computer-image {
+    background-image: url("img/rock-computer.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-style: solid;
+    border-color: black;
+    width: 200px;
+    height: 150px
+}
+
+#computer-bar {
+  width: 100%;
+  height: 15px;
+  background-color: green;
+  border-style: solid;
+  border-color: green;
+}
+
+#rock {
+   
+    background-image: url("img/rock-small.png");
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    width: 100px;
+    height: 75px;
+}
+
+
+
+#paper {
+   
+    background-image: url("img/paper-small.png");
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    width: 100px;
+    height: 75px;
+}
+
+#paper:hover {
+   
+}
+
+#scissors {
+   
+    background-image: url("img/scissors-small.png");
+    background-color: white;
+    border-style: solid;
+    border-color: black;
+    width: 100px;
+    height: 75px;
+}
+
+#scissors:hover {
+
+}
+
+
+
+
