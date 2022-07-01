@@ -14,7 +14,6 @@ function randomSqaure() {
     squares.forEach(square => {
         square.classList.remove("mole");
         square.classList.remove("hit");
-
         hit = false;
     })
     rand = Math.floor(Math.random()*9);
@@ -28,6 +27,7 @@ squares.forEach(square => {
     square.addEventListener("mousedown",event => {
         if (square.classList.contains("mole")) {
             result++;
+            hit=true;
             score.innerText=`${result}`;
             square.classList.remove("mole")
             square.classList.add("hit")
@@ -35,12 +35,21 @@ squares.forEach(square => {
     })
 })
 
-function moveMole() {
-        randomSqaure();
-
+function getLoopTimer(hit) {
+    if (hit==true) {
+        return 1000;
     }
+    else {
+        return 500;
+    }
+}
 
-
+function moveMole() {
+        if (hit=true) {
+            setTimeout(() => {  console.log("World!"); }, 500);
+        }
+        randomSqaure();
+    }
 
 let gameLoop = setInterval(moveMole,500);
 
